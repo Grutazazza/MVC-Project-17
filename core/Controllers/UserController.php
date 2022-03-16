@@ -20,4 +20,19 @@ class UserController extends BaseController
         $findUser = $user->create($_POST);
         return var_dump($findUser);
     }
+
+    public function login()
+    {
+        return view('login');
+    }
+
+    public function loginPost()
+    {
+        if($_POST['password'] != $_POST['password_confirmed'])
+            return header('Location: ?error_password');
+        unset($_POST['password_confirmed']);
+        $user = new User();
+        $findUser = $user->create($_POST);
+        return var_dump($findUser);
+    }
 }
