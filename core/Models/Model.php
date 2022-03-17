@@ -16,21 +16,22 @@ abstract class Model extends \mysqli
         $this->set_charset('UTF-8');
     }
 
+
     /**
      * Выгрузка данных из таблицы базы данных
-     * @param array $columns - массив колонок кот нужно получить
+     *
+     * @param array $columns - массив колонок, которые нужно получить
      * @return mixed
      */
-    # Вывод данных из таблица БД
     public function get($columns = [])
     {
-        $nameColumns = ($columns? implode(',',$columns):'*');
-        $this->inquiry = "SELECT * FROM `{$this->table}`";
-        $this->inquiry.=$this->join_query;
-        $this->inquiry.=!$this->where_query?'':'WHERE' .$this->where_query;
-
-        $this->where_query = !$this->where_query ? '' : 'WHERE ' . $this->where_query;
-        $this->inquiry = $this->inquiry ?: "SELECT * FROM `{$this->table}` {$this->where_query}";
+        $nameColumns = ($columns ? implode(',', $columns) : '*');
+        # Создаем базовый запрос на выгрузку всех данных из данной таблицы
+        $this->inquiry = "SELECT {$nameColumns} FROM `{$this->table}`";
+        # Добавляем если существуют JOIN соединения
+        $this->inquiry .= $this->join_query;
+        # Добавления Where если они прописаны
+        $this->inquiry .= !$this->where_query ? '' : 'WHERE ' . $this->where_query;
 
         # Удаление после выполнения!!!!
         return $this->query($this->inquiry)->fetch_all(MYSQLI_ASSOC);
@@ -105,16 +106,16 @@ abstract class Model extends \mysqli
         return $this;
     }
 
-    /** Соединение таблиц в СУБД
-     *  Используется JOIN
+    /**
+     * Соединение таблиц в СУБД
+     * Используется JOIN
      *
-     * @param $table - насвание таблицы
-     * @param $compound -Массив вида( 'азваниеКолонкиОсновнойТаблицы','НазваниеКолонкиСоединяемойТаблицы')
-     *
-    */
-    public function join($table,$compound)
+     * @param $table - Название таблицы
+     * @param $compound - Массив вида ['НазваниеКолонкиОсновнойТаблицы', 'НазваниеКолонкиСоединяемойТаблицы']
+     */
+    public function join($table, $compound)
     {
-            $this->join_query.=" JOIN {$table} ` ON ` {$this->table}`.`{$compound[0]}` = {$table}`.`{$compound[1]}`";
+        $this->join_query .= " JOIN `{$table}` ON `{$this->table}`.`{$compound[0]}` = `{$table}`.`{$compound[1]}`";
     }
 
     public function __destruct()
