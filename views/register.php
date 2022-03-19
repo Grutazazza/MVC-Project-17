@@ -14,23 +14,23 @@
             <form action="" method="POST">
                 <div class="mb-3">
                     <label for="inputName" class="form-label">Ваше ФИО:</label>
-                    <input type="text" name="name" <?=$isError('name',true) ?> id="inputName" placeholder="Фамилия Имя Отчество">
-                <?=$isError('name') ?>
+                    <input type="text" name="name" <?= $isError('name', true) ?> id="inputName" placeholder="Фамилия Имя Отчество">
+                    <?= $isError('name') ?>
                 </div>
                 <div class="mb-3">
                     <label for="inputLogin" class="form-label">Ваш логин:</label>
-                    <input type="text" name="login" <?=$isError('login',true) ?> id="inputLogin" placeholder="Укажите логин" required>
-                    <?=$isError('login') ?>
+                    <input type="text" name="login" <?= $isError('login', true) ?> id="inputLogin" placeholder="Укажите логин" required>
+                    <?= $isError('login') ?>
                 </div>
                 <div class="mb-3">
                     <label for="inputPassword" class="form-label">Ваш пароль:</label>
-                    <input type="password" name="password" <?=$isError('password',true) ?> id="inputPassword" placeholder="Укажите пароль:" required>
-                    <?=$isError('password') ?>
+                    <input type="password" name="password" <?= $isError('password', true) ?> id="inputPassword" placeholder="Укажите пароль:" required>
+                    <?= $isError('password') ?>
                 </div>
                 <div class="mb-3">
                     <label for="inputPasswordConfirmed" class="form-label">Ваш повтор пароля:</label>
-                    <input type="password" name="password_confirmed" <?=$isError('password_confirmed',true) ?> id="inputPasswordConfirmed" placeholder="Укажите пароль повторно:" required>
-                    <?=$isError('password_confirmed') ?>
+                    <input type="password" name="password_confirmed" <?= $isError('password_confirmed', true) ?> id="inputPasswordConfirmed" placeholder="Укажите пароль повторно:" required>
+                    <?= $isError('password_confirmed') ?>
                 </div>
                 <button type="submit" class="btn btn-primary">Регистрация</button>
             </form>
