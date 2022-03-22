@@ -9,6 +9,8 @@
 <ul>
     <li><a href="/login">Авторизация</a></li>
     <li><a href="/register">Регистрация</a></li>
+    <li><a href="/create">wow</a></li>
+
 </ul>
 <?php
 @include_once 'footer.php'

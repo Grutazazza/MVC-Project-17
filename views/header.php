@@ -36,6 +36,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/account">Мой аккаунт</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Posts/create">Мой аккаунт</a>
+                    </li>
                 <?php else: ?>
                 <li class="nav-item">
                     <a class="nav-link" href="/login">Авторизация</a>

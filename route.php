@@ -2,6 +2,7 @@
 
 use Controllers\MainController;
 use Controllers\UserController;
+use Controllers\PostController;
 
 Route::get('/', [MainController::class, 'index']);
 
@@ -10,3 +11,6 @@ Route::post('/register', [UserController::class, 'registerPost']);
 
 Route::get('/login', [UserController::class, 'login']);
 Route::post('/login', [UserController::class, 'loginPost']);
+
+Route::get('/create', [PostController::class, 'create']);
+Route::post('/create', [PostController::class, 'createPost']);
