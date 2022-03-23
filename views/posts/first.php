@@ -37,4 +37,23 @@
         </div>
         <div class="col"></div>
     </div>
+
+    <div class="row mt-2">
+        <div class="col"></div>
+        <div class="col-6">
+            <?php foreach ($comment_list->get() as $comment):?>
+            <div class="card  mb-3">
+                <div class="card-body">
+                    <h6 class="card-title">
+                        <?= $comment['name']?>
+                    </h6>
+                    <div class="card-text">
+                        <?= $comment['comment'] ?>
+                    </div>
+                </div>
+            </div>
+            <?php endforeach;?>
+        </div>
+        <div class="col"></div>
+    </div>
 </div>
