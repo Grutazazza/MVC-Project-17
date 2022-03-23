@@ -1,13 +1,24 @@
 <?php
 /*
- *Располагается базовая функции доступна ото всюду
+ * Располагаются базовые функции доступные ото всюду
  */
-function session($name){
+
+# Отвечает за получение значение из SESSION
+function session($name) {
     return $_SESSION[$name];
 }
-function has_session($name){
+
+# Проверяет на существование элемента в SESSION
+function has_session($name) {
     return isset($_SESSION[$name]);
 }
-function put_session($name,$value){
+
+# Записывает значение в SESSION
+function put_session($name, $value) {
     $_SESSION[$name] = $value;
+}
+
+# Функция отвечающая за redirect на другую страницу
+function redirect($url) {
+    return header('Location: ' . $url);
 }
